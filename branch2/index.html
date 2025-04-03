@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="shortcut icon" type="image/x-png" href="">
+	<link rel="stylesheet" type="text/css" href="/humbertosouza/branch2/css/main.css">
+</head>
+<body>
+
+<main id="app"></main>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<script>
+	// Drag and Drop
+	var clone_counter = 0;
+
+	function dragStart(e) {
+		e.dataTransfer.setData('Image', e.target.id);
+		setTimeout(function() {
+        e.target.classList.add('hide');
+    }, 0);
+	}
+
+	function dragEnter(e) {
+		e.preventDefault();
+	}
+
+	function dragOver(e) {
+		e.preventDefault();	
+	}
+
+	function dragLeave() {
+		
+	}
+
+	function drop(e) {
+		let id = e.dataTransfer.getData('Image');
+		let draggable = document.getElementById(id);
+		e.target.appendChild(draggable);
+		draggable.classList.remove('hide');
+		draggable.style.top  = (e.offsetY - draggable.clientHeight / 2) * 100 / e.target.clientHeight + '%';
+	  draggable.style.left = (e.offsetX - draggable.clientWidth / 2) * 100 / e.target.clientWidth + '%';
+	}
+</script>
+
+<script>
+	// Variável principal que conterá os dados JSON.
+	var data;	
+	var sdata = {
+		step: 1,
+		shirt_type: 0,		
+		shirt_model: 0,
+		view: 'front',
+		cloth: '',
+		shirt_part_selector: 'c1',
+		colors: {
+			c1: '/humbertosouza/branch2/img/profit/branco.png',
+			c2: '/humbertosouza/branch2/img/profit/branco.png',
+			c3: '/humbertosouza/branch2/img/buttons/branco.png'
+		},
+		files: '',
+		edit_mode: false,
+		img_target: null,
+		error: ''
+	}
+
+	function get( url ) {
+		// Retorna uma promessa.
+		return new Promise( function( resolve, reject ) {
+			// Faz o trabalho usual de requisição asíncrona.
+			var req = new XMLHttpRequest();
+			req.open( 'GET', url );
+
+			req.onload = function() {
+				// Verificando o status e resolvendo a promessa.
+				if ( req.status == 200 ) { resolve( req.response ); }
+				// Caso contrário rejeite a promessa com um texto.
+				else { reject( Error( req.statusText ) ); }
+			};
+
+			// Erro de rede.
+			req.onerror = function() {
+				reject( Error( 'Network Error' ) );
+			};
+			
+			// Faz a requisição.
+			req.send();
+		} );
+	}
+
+	function getJSON( url ) {
+		// Usando encadeamento 'then' para tratar a resposta como JSON.
+		// Retorna a promessa.
+		return get( url ).then( function( response ) { 		
+			return JSON.parse( response );
+		} );	
+	}
+
+	function getData( d ) {
+		// Parâmetro @d é o nome do arquivo que contém os dados,
+		// no caso é o nome do atributo do JSON em @response.
+		// Retorna a promessa.
+		let url = '/humbertosouza/branch2/query/get_data.php';
+
+		// @data recebe @data caso tenha sido feita a requisição.
+		// Desta maneira a requisição/promessa é feita apenas uma vez, o que é ótimo.
+		data = data || getJSON( url );
+
+		return data.then( function( response ) {
+			return response[d];
+		} );
+	}
+
+	function post( url, data ) {
+		// Retorna uma promessa.
+		return new Promise( function( resolve, reject ) {
+			// Faz o trabalho usual de requisição asíncrona.
+			var req = new XMLHttpRequest();
+			req.open( 'POST', url );
+
+			// application/x-www-form-urlencoded
+			// req.setRequestHeader("Content-type", "multipart/form-data");
+
+			req.onload = function() {
+				// Verificando o status e resolvendo a promessa.
+				if ( req.status == 200 ) { resolve( req.response ); }
+				// Caso contrário rejeite a promessa com um texto.
+				else { reject( Error( req.statusText ) ); }
+			};
+
+			// Erro de rede.
+			req.onerror = function() {
+				reject( Error( 'Network Error' ) );
+			};
+			
+			// Faz a requisição.
+			req.send(data);
+		} );
+	}
+	
+	/**
+	 * =======================================================
+	 * 
+	 *     EDITANDO ALGUNS ELEMENTOS DA TAG HEAD DO HTML
+	 * 
+	 * =======================================================
+	 */
+	getData( 'company_info' ).then( function( response ) { 
+		document.querySelector( 'title' ).innerHTML = response.title;
+		document.querySelector( 'head > link' ).setAttribute( 'href', response.icon );
+	} );
+
+	/**
+	 * =======================================================
+	 * 
+	 *              CRIANDO OS COMPONENTES VUE
+	 * 
+	 * =======================================================
+	 */
+	 var titleone = {
+	  props: { data: String },
+	 	template: `
+	 		<div class="titleone">
+	 			<h1 v-html="data"></h1>
+ 			</div>
+	 	`
+	 }
+
+	 var card = {
+	 	props: { data: Object },
+	 	template: `
+	 		<div>
+	 			<img v-if="data.img" v-bind:src=" data.img " />
+	 			<h3>{{ data.title }}</h3>
+	 		</div>
+	 	`,
+	 	methods: {
+	 		changeShirtType() {
+	 			this.$emit('changeShirtType', this.data.id);
+	 		}
+	 	}
+	 }
+
+	 var stepone = {
+	 	components: { 
+	 		'titleone': titleone,
+	 		'card': card
+	 	},
+	 	template: `
+	 		<div v-show="sdata.step == 1">
+	 			<titleone v-bind:data=" data.title "></titleone>
+	 			<div class="help" style="margin-bottom: 30px;">
+		 			<p v-if="sdata.shirt_type > 0">
+		 				Tipo <span>{{ data.cards[sdata.shirt_type - 1].title }}</span> selecionado. <svg height="32" viewBox="0 0, 22 24"><path fill="green" d="M0 10 l11 14 l12-24 l-12 16 z"/></svg>
+	 				</p>
+		 			<p v-else>Selecione um dos tipos de camisas listados abaixo.</p>
+		 		</div>
+	 			<div v-for="(item, index) in data.cards" v-bind:key="item.id" class="card" v-bind:class="{ bg_linear_one: item.id == sdata.shirt_type, bg_linear_dark: item.id != sdata.shirt_type }" v-on:click="changeShirtType(item.id)">
+	 				<card v-bind:data="item"></card>
+	 			</div>
+	 		</div>
+	 	`,
+	 	props: { sdata: Object },
+	 	data() { return { data } },
+	 	beforeCreate() {
+	 		const el = this;
+	 		getData('components').then(function(response) {
+	 			el.data = response.stepone;
+	 		});
+	 	},
+	 	methods: {
+	 		changeShirtType(id) {
+	 			this.sdata.shirt_type = id;
+	 		}
+	 	}
+	 }
+
+	 var steptwo = {
+	 	components: { 
+	 		'titleone': titleone,
+	 		'card': card
+	 	},
+	 	template: `
+	 		<div v-show="sdata.step == 2">
+	 			<titleone v-bind:data="data.title"></titleone>
+	 			<div class="help" style="margin-bottom: 30px;">
+		 			<p class="help" v-if="sdata.shirt_model > 0">
+		 			Modelo <span>{{ data.models[sdata.shirt_model - 1].title }}</span> selecionado. <svg height="32" viewBox="0 0, 22 24"><path fill="green" d="M0 10 l11 14 l12-24 l-12 16 z"/></svg>
+		 			</p>
+		 			<p class="help" v-else>Selecione um dos modelos de camisas listados abaixo.</p>
+		 		</div>
+	 			<div class="btn" v-for="item in data.models" v-bind:key="item.id" v-bind:class="{ bg_linear_one: item.id == sdata.shirt_model, bg_linear_dark: item.id != sdata.shirt_model }" v-on:click="changeShirtModel(item.id)">
+						{{ item.title }}
+				</div>
+	 		</div>
+	 	`,
+	 	props: { sdata: Object },
+	 	data() { return { data } },
+	 	beforeCreate() {
+	 		const el = this;
+	 		getData('components').then(function(response) {
+	 			el.data = response.steptwo;
+	 		});
+	 	},
+	 	methods: {
+	 		changeShirtModel(id) {
+	 			this.sdata.shirt_model = id;
+	 		}
+	 	}
+	 }
+
+	 var stepthree = {
+	 	template: `
+	 		<div class="div-three" v-show="sdata.step == 3">
+	 			<div>
+	 				<div>
+	 					<h2>Qual o tecido?</h2>
+ 						<div class="btn" v-for="item in data.cloths" v-bind:key="item.id" v-bind:class="{ bg_linear_one: item.id == sdata.cloth, bg_linear_dark: item.id != sdata.cloth }" v-on:click="changeCloth(item.id)">
+ 							{{ item.title }}
+ 							<br/>
+ 							<span>{{ item.composition }}</span>
+						</div>
+	 				</div>
+	 				<div>
+	 					<div v-html="arts(sdata.view, '3')" style="max-width: 300px; margin: 20px auto 0;"></div>
+	 					<div class="shadow"></div>
+	 					<div class="view-opts">
+		 					<div style="text-align: right" v-on:click="changeView('front')" v-bind:class="{selected: sdata.view == 'front'}" title="Frente">
+		 						<div v-html="arts('front', '3f')" style="width: 46px;"></div>
+	 						</div>
+		 					<div style="text-align: right" v-on:click="changeView('back')" v-bind:class="{selected: sdata.view == 'back'}" title="Costas">
+		 						<div v-html="arts('back', '3b')" style="width: 46px;"></div>
+	 						</div>
+		 				</div>
+	 				</div>
+	 			</div>
+	 			<div>
+	 				<div>
+	 					<!--<p>Partes da camisa.</p>-->
+	 					<div class="shirt-part-selector">
+	 						<ul>
+	 							<li v-on:click="changeShirtPartSelector('c1')" v-bind:class="{ selected: sdata.shirt_part_selector == 'c1' }">
+	 								Camisa
+	 								<br />
+	 								<span>{{ getColors(sdata.colors['c1']) }}</span>
+	 								<div style="position: absolute; right: 20px; bottom: 6px;">
+			 							<svg style="height: 20px;" viewBox="0 0, 24 20">
+			 								<path d="M0 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+			 								<path d="M9 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+			 							</svg>
+			 						</div>
+ 								</li>
+			 					<li v-on:click="changeShirtPartSelector('c2')" v-bind:class="{ selected: sdata.shirt_part_selector == 'c2' }">
+			 						Acabamento
+			 						<br />
+	 								<span>{{ getColors(sdata.colors['c2']) }}</span>
+	 								<div style="position: absolute; right: 20px; bottom: 6px;">
+			 							<svg style="height: 20px;" viewBox="0 0, 24 20">
+			 								<path d="M0 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+			 								<path d="M9 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+			 							</svg>
+			 						</div>
+		 						</li>
+			 					<li v-on:click="changeShirtPartSelector('c3')" v-bind:class="{ selected: sdata.shirt_part_selector == 'c3' }">
+			 						Botões
+			 						<br />
+	 								<span>{{ getColors(sdata.colors['c3']) }}</span>
+	 								<div style="position: absolute; right: 20px; bottom: 6px;">
+			 							<svg style="height: 20px;" viewBox="0 0, 24 20">
+			 								<path d="M0 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+			 								<path d="M9 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+			 							</svg>
+			 						</div>
+		 						</li>
+	 						</ul>
+		 				</div>
+	 				</div>
+ 					<div v-if="sdata.shirt_part_selector != 'c3'">
+ 						<div class="help">
+		 					<p v-if="sdata.cloth == ''">Escolha um <span>tipo de tecido</span> para abrir a paleta de cores.</p>
+		 					<p v-else>Clique em um dos itens abaixo para mudar a cor: <span>{{ shirtPart }}</span>.</p>
+	 					</div>
+	 					<div class="color-list">
+		 					<ul v-if="sdata.cloth != ''">
+		 						<li v-for="item in data.cloths[sdata.cloth - 1].colors" v-bind:title="item.title">
+		 							<img width="50" height="50" v-bind:src="data.cloths[sdata.cloth - 1].colors_path + '/' + item.file" v-on:click="changeColor"/>
+		 						</li>
+		 					</ul>
+		 				</div>
+	 				</div>
+	 				<div v-else>
+	 					<div class="help">
+	 						<p>Clique em um dos itens abaixo para mudar a cor: <span>Botões</span>.</p>
+	 					</div>
+	 					<div class="color-list">
+		 					<ul>
+		 						<li v-for="item in data.buttons.colors" v-bind:title="item.title">
+		 							<img width="50" height="50" v-bind:src="data.buttons.colors_path + item.file" v-on:click="changeColor"/>
+		 						</li>
+		 					</ul>
+		 				</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 	`,
+	 	props: { sdata: Object },
+	 	data() { return { data } },
+	 	computed: {
+	 		shirtPart: function() {
+	 			let part = '';
+	 			if (this.sdata.shirt_part_selector == 'c1') {
+	 				part = 'Camisa';
+	 			} else if (this.sdata.shirt_part_selector == 'c2') {
+	 				part = 'Acabamento';
+	 			}
+	 			return part;
+	 		}
+	 	},
+	 	beforeCreate() {
+	 		const el = this;
+	 		getData('components').then(function(response) {
+	 			el.data = response.stepthree;
+	 		});
+	 	},
+	 	methods: {
+	 		arts(view, id) {
+	 			if (this.sdata.shirt_type > 0 && this.sdata.shirt_model > 0) {
+	 				let key = this.sdata.shirt_type.toString() + this.sdata.shirt_model.toString();
+	 				let art = this.data.arts[key][view];
+	 				art = art.replace(/c1/g, this.sdata.colors['c1']);
+	 				art = art.replace(/c2/g, this.sdata.colors['c2']);
+	 				art = art.replace(/c3/g, this.sdata.colors['c3']);
+	 				art = art.replace(/shirt_path/g, 'shirt_path_' + id);
+	 				art = art.replace(/finishing_path/g, 'finishing_path_' + id);
+	 				art = art.replace(/buttons_path/g, 'buttons_path_' + id);
+	 				return art;
+	 			}
+	 		},
+	 		changeView(view) {
+	 			this.sdata.view = view;
+	 		},
+	 		changeCloth(id) {
+	 			this.sdata.cloth = id;
+	 		},
+	 		changeShirtPartSelector(part) {
+	 			this.sdata.shirt_part_selector = part;
+	 		},
+	 		changeColor() {
+	 			this.sdata.colors[this.sdata.shirt_part_selector] = event.target.src;
+	 		},
+	 		getColors(path) {
+	 			path_array = path.replace(/\/\//g, '/');
+	 			path_array = path_array.split('/');
+	 			color = path_array[path_array.length - 1];
+	 			color = color.replace('.png', '');
+	 			cloth = path_array[path_array.length - 2];	 			
+	 			return cloth != 'buttons' ? cloth + ' / ' + color : color;
+	 		}
+	 	}
+	 }
+
+	 var stepfour = {
+	 	template: `
+	 		<div class="div-three" v-show="sdata.step == 4">
+	 			<div>
+	 				<div>
+	 					<h2>{{ dfour.title }}</h2>
+ 						<div class="btn bg_linear_one" style="position: relative">
+ 							<form id="uploadForm">
+ 								<label for="file">Escolher arquivo</label>
+ 								<input id="file" name="file" type="file" style="opacity: 0; position: absolute;" v-on:change="upload"/>
+ 							</form>
+						</div>
+						<div class="info">
+							<p>Extensões válidas: png, PNG, jpg, JPG, jpeg, JPEG</p>
+							<p>Tamanho máximo: 500KB</p>
+						</div>
+	 				</div>
+	 				<div>
+	 					<div v-html="arts(sdata.view, '4')" style="max-width: 300px; margin: 20px auto 0;"></div>
+	 					<div class="drop-targets" id="div-front" v-show="sdata.view == 'front'" v-bind:class="{'drop-targets-edit': sdata.edit_mode}" v-on:click="editImage"></div>
+	 					<div class="drop-targets" id="div-back"  v-show="sdata.view == 'back'" v-bind:class="{'drop-targets-edit': sdata.edit_mode}" v-on:click="editImage"></div>
+	 					<div class="edit-mode" v-if="children_target">
+	 						<p v-if="sdata.edit_mode" v-on:click="changeEditMode(false)">OK</p>
+	 						<p v-else v-on:click="changeEditMode(true)">Editar Imagem</p>
+	 					</div>
+	 					<div class="shadow"></div>
+	 					<div class="view-opts">
+		 					<div style="text-align: right" v-on:click="changeView('front')" v-bind:class="{selected: sdata.view == 'front'}" title="Frente">
+		 						<div v-html="arts('front', '4f')" style="width: 46px;"></div>
+	 						</div>
+		 					<div style="text-align: right" v-on:click="changeView('back')" v-bind:class="{selected: sdata.view == 'back'}" title="Costas">
+		 						<div v-html="arts('back', '4b')" style="width: 46px;"></div>
+	 						</div>
+		 				</div>
+	 				</div>
+	 			</div>
+	 			<div>
+	 				<div v-if="!sdata.edit_mode">
+	 					<p style="color: var(--color-lightdark); padding: 20px;" v-if="sdata.files.length > 0">
+	 						Clique em uma imagem da lista para inserir no simulador.
+	 						<br /><br />
+	 						No simulador, arraste e solte a imagem para posiciona-la.
+ 						</p>
+	 				</div>
+					<div v-else>
+	 					<p style="color: var(--color-lightdark); padding: 20px;" v-if="sdata.files.length > 0">Clique em uma imagem do simulador para editar suas dimensões e aplicar rotações.</p>
+					</div>
+					<div>						
+						<div class="help" v-if="!sdata.edit_mode">
+		 					<p v-if="sdata.files.length == 0"><span>Lista</span> de imagens vazia.</p>
+		 					<p v-else><span>Lista</span> de imagens.</p>
+						</div>
+						<div class="help" v-else>
+		 					<p>Editar <span>imagem</span>.</p>
+						</div>
+						<div class="color-list">											
+		 					<ul v-show="sdata.files != '' && !sdata.edit_mode">
+		 						<li v-for="(file, index) in sdata.files" style="border: 1px solid var(--color-gray); margin: 2px; padding: 3px;">		 							
+		 							<img width="50" height="50" v-bind:src="file" v-on:click="insertImage"/>
+		 						</li>
+		 					</ul>
+		 					<div id="edit-area" v-show="sdata.edit_mode && sdata.img_target" style="display: flex; justify-content: space-around; width: 100%; max-width: 500px; margin: 0 auto;">
+		 						<div style="align-self: center; position: relative; padding: 12px; border: 1px solid var(--color-one);">
+		 							<div style="display: flex; align-items: center; height: 25px; position: absolute; top: -10px; right: -10px; cursor: pointer; background-color: var(--color-one); padding: 3px;" v-on:click="clearImg" title="Clique para remover a imagem do simulador.">
+		 								<svg width="15" viewBox="0 0, 24 24" height="38">
+											<path stroke="white" stroke-linecap="round" stroke-width="2" d="M2 2 l20 20" />			
+											<path stroke="white" stroke-linecap="round" stroke-width="2"  d="M22 2 l-20 20" />
+										</svg>
+									</div>
+		 							<img width="50" height="50" src=""/>
+	 							</div>
+		 						<div style="text-align: left;">
+		 							<label>Largura : </label>
+		 							<input type="number" min="0" max="100" step="5" value="0" v-on:change="resizeImg" style="margin-bottom: 6px;" /> px
+		 							<br/>
+		 							Rotações:
+		 							<br/>
+		 							<label style="margin-top: 3px;">X: </label>
+		 							<input type="number" min="-90" max="90" step="5" value="0" v-on:change="rotateImgX"/> °
+		 							<br/>
+		 							<label>Y: </label>
+		 							<input type="number" min="-90" max="90" step="5" value="0" v-on:change="rotateImgY"/> °
+		 							<br/>
+		 							<label>Z: </label>
+		 							<input type="number" min="-90" max="90" step="5" value="0" v-on:change="rotateImgZ"/> °
+		 						</div>
+		 					</div>
+		 				</div>
+		 			</div>
+				</div>
+	 		</div>
+	 	`,
+	 	props: { sdata: Object },
+	 	data() { return { 
+	 		dthree: "", 
+	 		dfour: "",
+	 		children_target: false
+	 	} },
+	 	computed: {
+	 		
+	 	},
+	 	beforeCreate() {
+	 		const el = this;
+	 		getData('components').then(function(response) {
+	 			el.dthree = response.stepthree;
+	 			el.dfour = response.stepfour;
+	 		});
+	 		get('/humbertosouza/branch2/query/get_upload.php').then(function(response) {
+					if (response) {
+						el.sdata.files = JSON.parse(response);
+					}
+			});
+	 	},
+	 	methods: {
+	 		arts(view, id) {
+	 			if (this.sdata.shirt_type > 0 && this.sdata.shirt_model > 0) { 				
+	 				let key = this.sdata.shirt_type.toString() + this.sdata.shirt_model.toString();	 				
+	 				let art = this.dthree.arts[key][view];
+	 				art = art.replace(/c1/g, this.sdata.colors['c1']);
+	 				art = art.replace(/c2/g, this.sdata.colors['c2']);
+	 				art = art.replace(/c3/g, this.sdata.colors['c3']);
+	 				art = art.replace(/shirt_path/g, 'shirt_path_' + id);
+	 				art = art.replace(/finishing_path/g, 'finishing_path_' + id);
+	 				art = art.replace(/buttons_path/g, 'buttons_path_' + id);
+	 				return art;
+	 			}
+	 		},
+	 		changeView(view) {
+	 			this.sdata.view = view;
+	 			this.sdata.edit_mode = false;
+	 		},
+	 		changeEditMode(edit_mode) {
+	 			this.sdata.edit_mode = edit_mode;
+	 			this.sdata.img_target = '';
+	 			if (edit_mode == false) { this.editBorderColor(); }
+	 		},
+	 		upload() {
+	 			this.sdata.edit_mode = false;
+	 			let el = this;
+	 			let data = new FormData(uploadForm);
+	 			post('/humbertosouza/branch2/query/upload.php', data)
+	 			.then(function(response) {
+	 				if (response == 'success') {
+	 					get('/humbertosouza/branch2/query/get_upload.php').then(function(response) {
+	 							if (response) {
+	 								el.sdata.files = JSON.parse(response);
+	 							}
+	 					});
+	 				}
+	 			});
+	 			event.target.value = '';
+	 		},
+	 		insertImage() {
+	 			clone_counter++;	 			
+	 			let clone = event.target.cloneNode();
+	 			let id = '#div-' + this.sdata.view;
+	 			clone.style.position = 'absolute';
+	 			clone.setAttribute('id', 'clone' + clone_counter);
+	 			clone.setAttribute('class', 'item');
+	 			clone.setAttribute('rotatex', '0');
+	 			clone.setAttribute('rotatey', '0');
+	 			clone.setAttribute('rotatez', '0');
+	 			clone.removeAttribute('height');
+	 			clone.setAttribute('draggable', true);
+	 			clone.addEventListener('dragstart', dragStart);
+	 			document.querySelector(id).appendChild(clone);
+
+				this.children_target = document.querySelector(id).children.length > 0;
+	 		},
+	 		editBorderColor() {
+	 			let imgs = document.querySelectorAll('.item');
+				for (img of imgs) {
+					img.style.borderColor = 'var(--color-dark)';
+				}
+	 		},
+	 		editImage(e) {
+	 			if (e.target.tagName == 'IMG' && this.sdata.edit_mode) {
+	 				this.sdata.img_target = e.target;
+	 				this.editBorderColor();
+					e.target.style.borderColor = 'var(--color-one)';
+					document.querySelector('#edit-area img').src = e.target.src;
+					document.querySelector('#edit-area > :nth-child(2) > :nth-child(2)').value = e.target.width + 2 * e.target.clientLeft;
+					document.querySelector('#edit-area > :nth-child(2) > :nth-child(5)').value = e.target.getAttribute('rotatex');
+					document.querySelector('#edit-area > :nth-child(2) > :nth-child(8)').value = e.target.getAttribute('rotatey');
+					document.querySelector('#edit-area > :nth-child(2) > :nth-child(11)').value = e.target.getAttribute('rotatez');
+	 			}
+	 		},
+	 		resizeImg(e) {
+		 		this.sdata.img_target.width = e.target.value;
+		 	},
+		 	rotateImgX(e) {
+		 		let x, y, z, rotate;
+		 		x = e.target.value;
+		 		y = this.sdata.img_target.getAttribute('rotatey');
+		 		z = this.sdata.img_target.getAttribute('rotatez');
+
+		 		rotate = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
+
+		 		this.sdata.img_target.style.transform = rotate;	
+		 		this.sdata.img_target.setAttribute('rotatex', e.target.value);
+		 	},
+		 	rotateImgY(e) {
+		 		let x, y, z, rotate;
+		 		x = this.sdata.img_target.getAttribute('rotatex');
+		 		y = e.target.value;
+		 		z = this.sdata.img_target.getAttribute('rotatez');
+
+		 		rotate = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
+
+		 		this.sdata.img_target.style.transform = rotate;	
+		 		this.sdata.img_target.setAttribute('rotatey', e.target.value);
+		 	},
+		 	rotateImgZ(e) {
+		 		let x, y, z, rotate;
+		 		x = this.sdata.img_target.getAttribute('rotatex');
+		 		y = this.sdata.img_target.getAttribute('rotatey');
+		 		z = e.target.value;
+
+		 		rotate = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
+
+		 		this.sdata.img_target.style.transform = rotate;	
+		 		this.sdata.img_target.setAttribute('rotatez', e.target.value);
+		 	},
+		 	clearImg() {
+		 		let id = '#div-' + this.sdata.view;
+		 		this.sdata.img_target.remove();
+		 		this.sdata.img_target = null;
+		 		this.sdata.edit_mode = false;
+		 		this.children_target = document.querySelector(id).children.length > 0;
+		 	}
+	 	},
+	 	mounted() {		 		
+	 		let drop_target = document.querySelectorAll('.drop-targets');
+	 		for (item of drop_target) {
+	 			item.addEventListener('dragenter', dragEnter);
+	 			item.addEventListener('dragover', dragOver);
+	 			item.addEventListener('dragleave', dragLeave);
+	 			item.addEventListener('drop', drop);
+	 		}	 		
+	 	}
+	 }
+
+	 var stepfive = {
+	 	components: {
+	 		'titleone': titleone
+	 	},
+	 	template: `
+	 		<div v-show="sdata.step == 5" style="overflow-y: auto;">
+	 			<titleone v-bind:data=" dfive.title "></titleone>
+	 			<div style="align-items: center; display: flex; flex-direction: column; height: calc(100% - 120px); justify-content: center; ">
+	 				<h2>
+	 					A sua escolha de camisa foi
+	 					<br/>
+	 					. . .
+ 					</h2>
+		 			<div class="resume">
+		 				<h4 v-if="sdata.shirt_type > 0">Tipo: <span>{{ done.cards[sdata.shirt_type - 1].title }}</span></h4>
+		 				<h4 v-if="sdata.shirt_model > 0">Modelo: <span>{{ dtwo.models[sdata.shirt_model - 1].title }}</span></h4>
+		 				<h4>Tecido / Cor:</h4>
+		 				<div class="shirt-part-selector">
+	 						<ul>
+	 							<li v-on:click="changeShirtPartSelector('c1')">
+	 								<span>Camisa {{ getColors(sdata.colors['c1']) }}</span>
+ 								</li>
+			 					<li v-on:click="changeShirtPartSelector('c2')">
+	 								<span>Acabamento {{ getColors(sdata.colors['c2']) }}</span>
+		 						</li>
+			 					<li v-on:click="changeShirtPartSelector('c3')">
+	 								<span>Botões {{ getColors(sdata.colors['c3']) }}</span> 								
+		 						</li>
+	 						</ul>
+		 				</div>
+		 			</div>
+		 			<a class="btn-root" href="https://api.whatsapp.com/send?phone=+5548999812348&amp;text=Olá, quero falar com o vendedor da Humberto Souza Alfaiataria." target="_blank" rel="noopener">Entre em contato</a>
+		 		</div>
+	 		</div>
+	 	`,
+	 	props: { sdata: Object },
+	 	data() { return { 
+	 		dfive: "",
+	 		done: "",
+	 		dtwo: "",
+	 		dinfo: ""
+	 	} },
+	 	computed: {
+	 		tel: function() {
+	 			return 'tel:' + this.dinfo.tel;
+	 		}
+	 	},
+	 	beforeCreate() {
+	 		const el = this;
+	 		getData('components').then(function(response) {
+	 			el.dfive = response.stepfive;
+	 			el.done = response.stepone;
+	 			el.dtwo = response.steptwo;
+	 		});
+	 		getData('company_info').then(function(response) {
+	 			el.dinfo = response;
+	 		});
+	 	},
+	 	methods: {
+	 		getColors(path) {
+	 			path_array = path.replace(/\/\//g, '/');
+	 			path_array = path_array.split('/');
+	 			color = path_array[path_array.length - 1];
+	 			color = color.replace('.png', '');
+	 			cloth = path_array[path_array.length - 2];	 			
+	 			return cloth != 'buttons' ? cloth + ' / ' + color : color;
+	 		}
+	 	}
+	 }
+
+	 /**
+	 * =======================================================
+	 * 
+	 *                   CRIANDO O APP VUE
+	 * 
+	 * =======================================================
+	 */
+	var app = new Vue( {
+		el: '#app',
+		components: { 
+			'stepone': stepone,
+			'steptwo': steptwo,
+			'stepthree': stepthree,
+			'stepfour': stepfour,
+			'stepfive': stepfive
+		},
+		template: `
+			<main>
+				<div v-show="data.error">
+				  <span v-on:click="clearerror">X</span>
+					{{ data.error }}					
+				</div>
+				<div v-on:click="clearerror">
+					<stepone v-bind:sdata="data"></stepone>
+					<steptwo v-bind:sdata="data"></steptwo>
+					<stepthree v-bind:sdata="data"></stepthree>
+					<stepfour v-bind:sdata="data"></stepfour>
+					<stepfive v-bind:sdata="data"></stepfive>
+				</div>
+				<div>
+					<div class="btn-aside" v-on:click="begin" v-show="data.step > 1">
+						Início
+						<svg viewBox="0 0, 24 24" height="20">
+							<path stroke="white" d="M0 24 h24" />
+							<path fill="transparent" stroke="white" stroke-linecap="round" stroke-width="2" d="M19 2 v20 h-14 v-9 l-3 3 l10 -14 l10 14" />
+						</svg>
+					</div>
+	 				<div class="btn-aside" style="position: absolute; top: calc(50% - 14px);" v-show="data.step < 5" v-on:click="nextstep">
+	 					Próximo
+						<svg style="vertical-align: middle;" height="20" viewBox="0 0, 24 20">
+							<path style="fill: rgb(255, 255, 255);" d="M0 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+							<path style="fill: rgb(255, 255, 255);" d="M9 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+						</svg>
+ 					</div>
+	 				<div class="btn-aside" v-show="data.step > 1" v-on:click="previewstep">
+	 					<svg style="vertical-align: middle; transform: scale(-1,1);" height="20" viewBox="0 0, 24 20">
+							<path style="fill: rgb(255, 255, 255);" d="M0 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+							<path style="fill: rgb(255, 255, 255);" d="M9 0 h5 l10 10 l-10 10 h-5 l10 -10 z"/>
+						</svg>
+	 					Anterior	 					
+ 					</div>
+				</div>
+			</main>
+		`,
+		data: { data: sdata },
+		methods: {
+	 		begin() {
+	 			this.data.step = 1;
+	 		},
+	 		nextstep() {
+	 			if (this.data.step == 1) {
+		 			if (this.data.shirt_type > 0) {
+		 				this.data.step++;
+		 			}	else {
+		 				this.data.error = 'Selecione um tipo de camisa para prosseguir.';
+		 			}
+		 		} else if (this.data.step == 2) {
+		 			if (this.data.shirt_model > 0) {
+		 				this.data.step++;
+		 			}	else {
+		 				this.data.error = 'Selecione um modelo de camisa para prosseguir.';
+		 			}
+		 		} else {
+		 			this.data.step++;
+		 		}
+	 		},
+	 		clearerror() {
+	 			this.data.error = '';
+	 		},
+	 		previewstep() {
+	 			this.data.step--;
+	 		}
+	 	}
+	} );
+</script>
+
+</body>
+</html>

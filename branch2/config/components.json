@@ -1,0 +1,162 @@
+{
+	"stepone": {
+		"title": "Qual o tipo de camisa?",
+		"cards": [
+			{
+				"id": 1,
+				"img": "/humbertosouza/branch2/img/cardone.png",
+				"title": "Social Manga Longa"
+			},
+			{
+				"id": 2,
+				"img": "/humbertosouza/branch2/img/cardtwo.png",
+				"title": "Social Manga Curta"
+			},
+			{
+				"id": 3,
+				"img": "/humbertosouza/branch2/img/cardthree.png",
+				"title": "Polo"
+			}
+		]
+	},
+	"steptwo": {
+		"title": "Qual o modelo?",
+		"models": [
+			{
+				"id": 1,
+				"title": "Masculino"
+			},
+			{
+				"id": 2,
+				"title": "Feminino"
+			}
+		]
+	},
+	"stepthree": {
+		"title": "Qual o tecido?",
+		"cloths": [
+			{
+				"id": 1,
+				"title": "Profit",
+				"composition": "67% poliester, 33% algodão",
+				"colors_path": "/humbertosouza/branch2/img/profit/",
+				"colors": [
+					{ "title": "Branco", "file": "branco.png"},
+					{ "title": "Karité", "file": "karite.png"},
+					{ "title": "Manteiga", "file": "manteiga.png"},
+					{ "title": "Freijó", "file": "freijo.png"},
+					{ "title": "Alfazema", "file": "alfazema.png"},
+					{ "title": "Menta", "file": "menta.png"},
+					{ "title": "Thaty", "file": "thaty.png"},
+					{ "title": "Prisma", "file": "prisma.png"},
+					{ "title": "Plácido", "file": "placido.png"},
+					{ "title": "Provence", "file": "provence.png"},
+					{ "title": "Marítimo", "file": "maritimo.png"},
+					{ "title": "Jeans", "file": "jeans.png"},
+					{ "title": "Deserto", "file": "deserto.png"},
+					{ "title": "Red Orange", "file": "red_orange.png"},
+					{ "title": "Aurora", "file": "aurora.png"},
+					{ "title": "Cobalto", "file": "cobalto.png"},
+					{ "title": "Silver", "file": "silver.png"},
+					{ "title": "Cinza Claro", "file": "cinza_claro.png"},
+					{ "title": "Soldado", "file": "soldado.png"},
+					{ "title": "Amazon", "file": "amazon.png"},
+					{ "title": "Grafite", "file": "grafite.png"},
+					{ "title": "Navy", "file": "navy.png"},
+					{ "title": "Marinho", "file": "marinho.png"},
+					{ "title": "Preto", "file": "preto.png"}
+				]
+			},
+			{
+				"id": 2,
+				"title": "Tricoline",
+				"composition": "66% poliester, 17% viscose, 17% algodão",
+				"colors_path": "/humbertosouza/branch2/img/tricoline/",
+				"colors": [
+					{ "title": "Neve", "file": "neve.png"},
+					{ "title": "CZ Tweed", "file": "cz_tweed.png"},
+					{ "title": "Citrino", "file": "citrino.png"},
+					{ "title": "Grisáceo", "file": "grisaceo.png"}
+				]
+			},
+			{
+				"id": 3,
+				"title": "Fusili",
+				"composition": "70% algodão, 30% poliester",
+				"colors_path": "/humbertosouza/branch2/img/fusili/",
+				"colors": [
+					{ "title": "CZ Claro", "file": "cz_claro.png"},
+					{ "title": "CZ Médio", "file": "cz_medio.png"},
+					{ "title": "Azul", "file": "azul.png"},
+					{ "title": "Royal", "file": "royal.png"},
+					{ "title": "Verde Claro", "file": "verde_claro.png"},
+					{ "title": "Verde", "file": "verde.png"},
+					{ "title": "Vermelho", "file": "vermelho.png"},
+					{ "title": "Marinho", "file": "marinho.png"},
+					{ "title": "Preto", "file": "preto.png"}
+				]
+			}
+		],
+		"buttons": {
+			"colors_path": "/humbertosouza/branch2/img/buttons/",
+			"colors": [
+				{ "title": "Branco", "file": "branco.png"},
+				{ "title": "Karité", "file": "karite.png"},
+				{ "title": "Manteiga", "file": "manteiga.png"},
+				{ "title": "Freijó", "file": "freijo.png"},
+				{ "title": "Alfazema", "file": "alfazema.png"},
+				{ "title": "Menta", "file": "menta.png"},
+				{ "title": "Thaty", "file": "thaty.png"},
+				{ "title": "Prisma", "file": "prisma.png"},
+				{ "title": "Plácido", "file": "placido.png"},
+				{ "title": "Provence", "file": "provence.png"},
+				{ "title": "Marítimo", "file": "maritimo.png"},
+				{ "title": "Jeans", "file": "jeans.png"},
+				{ "title": "Deserto", "file": "deserto.png"},
+				{ "title": "Red Orange", "file": "red_orange.png"},
+				{ "title": "Aurora", "file": "aurora.png"},
+				{ "title": "Cobalto", "file": "cobalto.png"},
+				{ "title": "Silver", "file": "silver.png"},
+				{ "title": "Cinza Claro", "file": "cinza_claro.png"},
+				{ "title": "Soldado", "file": "soldado.png"},
+				{ "title": "Amazon", "file": "amazon.png"},
+				{ "title": "Grafite", "file": "grafite.png"},
+				{ "title": "Navy", "file": "navy.png"},
+				{ "title": "Marinho", "file": "marinho.png"},
+				{ "title": "Preto", "file": "preto.png"}
+			]
+		},
+		"arts": {
+			"11": {
+				"front": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M61.99 403.63 L68.42 300.06 L39.85 403.99 L2.70 394.7 L24.49 245.06 L27.7 124.7 C42.43 78.79, 79.8 80.81, 104.85 57.92 C107.08 36.37, 118.19 39.4, 128.42 35.06 L179.49 37.2 L192.7 56.13 L245.56 83.27 C263.65 100.01, 264.66 112.13, 268.78 125.41 L294.13 262.56 L297.35 307.56 L292.66 333.21 L253.2 330.83 L254.13 321.49 L241.63 256.84 L226.99 216.13 L218.06 310.77 L229.13 393.63 L221.63 392.2 C203.04 429.31, 90.91 449.52, 61.99 403.63\" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M251.99 361.12 L246.44 336.34 C247.23 333.86, 249.63 332.09, 253.21 330.83 C268.83 329.94, 283.6 331.33, 298.05 333.82 L292.46 362.13 L288.69 362.32 C276.15 361.13, 263.9 359.49, 251.99 361.12\" /><path d=\"M124.75 90.41 L110.61 83.84 L105.84 57.8 C106.79 41.61, 114.11 37.41, 128.46 36.42 L179.49 37.2 L170.53 51.96 Q135.71 50.36, 127.3 51.15 Q115.18 52.5, 116.79 54.55 C108.84 73.04, 112.41 86.61, 124.75 90.41\" /></clipPath><clipPath id=\"buttons_path\"><circle cx=\"111.52\" cy=\"341.07\" r=\"3\"/><circle cx=\"112.59\" cy=\"291.52\" r=\"3\" /><circle cx=\"113.66\" cy=\"246.96\" r=\"3\" /><circle cx=\"114.82\" cy=\"201.34\" r=\"3\" /><circle cx=\"117.68\" cy=\"158.21\" r=\"3\" /><circle cx=\"125.63\" cy=\"117.95\" r=\"3\" /><path d=\"M109.91 89.28 L114.19 90.53 Q111.7 92.23, 110.62 91.42 Q110 91.07, 109.91 89.28\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/11f.png\" clip-path=\"url(#rectView)\"/></svg>",
+				"back": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M74.19 390.13 L74.91 295.84 L69.19 218.7 C58.57 240.71, 57.86 265, 53.48 287.27 L49.91 381.56 L24.91 383.7 L15.62 379.42 L15.62 356.56 C7.14 287.86, 11.43 252.86, 11.34 211.56 C24.29 172.14, 30 128.57, 50.62 93.7 L119.19 67.27 L129.19 57.99 L134.19 42.99 C156.43 37.86, 170 40, 182.05 47.27 L184.19 65.84 L261.34 103.7 C280 116.43, 280.71 149.29, 286.34 171.56 L290.62 315.13 L279.19 360.84 L283.48 389.42 L273.48 395.84 L250.62 394.42 L249.19 332.99 L242.05 297.27 L234.19 212.27 L230.62 262.99 L244.19 367.99 C232.14 372.86, 226.43 390.71, 217.76 402.99 C170.71 430, 121.43 437.14, 74.19 390.13\" /></clipPath><clipPath id=\"buttons_path\"><circle cx=\"37.88\" cy=\"372.75\" r=\"3\" /><circle cx=\"259.99\" cy=\"380.51\" r=\"3\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/11b.png\" clip-path=\"url(#rectView)\"/></svg>"
+			},
+			"12": {
+				"front": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M2.39 404.76 L16.16 355.45 C8.08 268.7, 46.47 106.07, 56.58 94.48 L114.33 76.49 L126.69 54.25 C163.64 44.45, 179.81 53.54, 190.14 58.97 L205.21 81.27 L215.58 87.23 L254.84 100.43 C266.68 115.16, 294.96 242.44, 286.88 331.12 L245.29 336.99 L230.68 248.62 C234.36 235.37, 231.32 211.12, 225.61 189.45 Q199 246.48, 237.51 358.8 C233.35 370.73, 223.24 393.96, 201.97 411.71 Q193.21 419.82, 160.97 410.87 V414.98 L116.53 412.13 Q40.79 395.14, 75.8 295.17 Q90.36 258.21, 83.34 195.91 C71.72 266.68, 56.57 334.36, 49.92 411.87 Z\" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M241.37 333.34 C260.37 331.84, 277.41 329.31, 292.1 325.17 C290.29 337.9, 288.9 350.14, 297.6 358.94 C286.13 377.42, 264.41 367.06, 247.03 367.73 C240.29 356.58, 243.07 343.7, 241.37 333.34\" /><path d=\"M127.32 56.42 C151.78 47.98, 172.86 48.23, 188.75 60.89 C189.66 64.65, 189.91 68.44, 187.85 73.92 C167.31 59.85, 146.98 58.34, 127.14 76.25 C123.62 70.21, 125.76 63.26, 127.32 56.42\" /></clipPath><clipPath id=\"buttons_path\"><circle cx=\"153.75\" cy=\"356.43\" r=\"3\" /><circle cx=\"152.68\" cy=\"314.29\" r=\"3\" /><circle cx=\"153.57\" cy=\"270.89\" r=\"3\" /><circle cx=\"152.68\" cy=\"228.21\" r=\"3\" /><circle cx=\"153.57\" cy=\"183.93\" r=\"3\" /><path d=\"M182.39 93.5 L185.11 90.41 Q185.93 92.49, 185.3 92.99 Q184.73 93.88, 182.39 93.5\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/12f.png\" clip-path=\"url(#rectView)\"/></svg>",
+				"back": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M19.5 244.32 L17.28 237.10 L21.16 235.44 L32.82 118.85 C38.93 95.89, 53.57 91.43, 68.35 87.21 L103.32 75.55 L116.09 48.91 L188.26 51.68 L202.69 79.44 L255.43 98.87 L260.43 107.2 L264.87 111.08 L275.42 240.43 L280.97 239.88 L279.86 243.76 L232.67 242.65 L228.23 233.21 L215.46 260.42 L218.79 277.07 L241 355.9 C235.87 412.65, 77.78 462.65, 57.8 339.25 C71.72 319.21, 80.31 299.01, 82.78 278.18 L83.34 241.54 L71.68 214.34 L68.35 248.2 Z\" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M12.28 274.3 L18.94 258.2 L14.5 245.43 L19.5 244.32 L68.35 248.2 L71.13 250.98 L67.79 279.85 C49.32 291.68, 30.94 279.84, 12.28 274.3\" /><path d=\"M232.67 286.51 V242.65 L279.86 243.76 L287.63 242.1 L279.86 264.86 L283.75 279.85 C271.5 292.13, 251.88 288.88, 232.67 286.51\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/12b.png\" clip-path=\"url(#rectView)\"/></svg>"
+			},
+			"21": {
+				"front": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M75.4 397.08 C67.88 360.62, 69.3 323.15, 70.45 283.94 L73.63 215.71 L13.88 201.21 L25.2 123.08 C31.11 86.27, 80.61 79.2, 113.94 61.91 L116.41 48.48 C137.89 41.72, 179.9 44.55, 185.36 49.19 L189.25 64.03 C224.15 81.32, 270.82 79.9, 277.28 130.15 L286.12 199.80 L229.2 216.77 C226.98 275.77, 241.83 346.48, 228.14 384.35 C226.98 424.97, 111.72 434.16, 75.4 397.08\" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M119.87 58.37 L117.9 54.93 L117.71 50.06 C139.88 44.13, 161.38 44.5, 182.62 49.25 L184.25 53.5 L181.62 58.37 C161 57.63, 140.5 57.38, 119.87 58.37\" /></clipPath><clipPath id=\"buttons_path\"><circle cx=\"147.5\" cy=\"343.5\" r=\"3\" /><circle cx=\"147\" cy=\"297\" r=\"3\" /><circle cx=\"147\" cy=\"252\" r=\"3\" /><circle cx=\"146\" cy=\"203.5\" r=\"3\" /><circle cx=\"146\" cy=\"159\" r=\"3\" /><circle cx=\"147.5\" cy=\"116.5\" r=\"3\" /><circle cx=\"149\" cy=\"90\" r=\"2.5\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/21f.png\" clip-path=\"url(#rectView)\"/></svg>",
+				"back": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M75.4 397.22 C67.18 360.27, 69.3 322.09, 70.45 284.08 L59.13 214.34 L13.88 201.35 L25.2 123.21 C32.53 86.62, 79.9 79.55, 113.94 62.05 L116.41 48.61 C137.18 41.72, 179.25 44.9, 185.36 49.32 L189.25 64.17 C224.15 81.32, 271.53 82.02, 277.28 130.28 L286.12 199.93 L239.2 218.91 C235.47 275.42, 249.26 345.42, 235.92 383.78 C234.76 423.2, 112.43 434.52, 75.4 397.22\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/21b.png\" clip-path=\"url(#rectView)\"/></svg>"
+			},
+			"22": {
+				"front": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M53.56 362.95 C75.48 313.43, 79.9 242.54, 67.69 198.04 L64.9 211 L48.7 227.05 C38.54 229.63, 25.81 225.57, 12.77 211.74 L33.53 117.95 C52.5 108.19, 71.42 101.47, 90.66 98.51 L111.35 72.75 L117.46 67.89 L181.52 67.82 L190.05 73.33 L210.36 98.51 C231.05 101.65, 248.9 110.84, 267.2 118.09 L287.22 211.73 C279.13 222.03, 267.82 228.4, 251.3 226.46 L235.25 209.53 L233.63 198.19 C221.32 252.79, 222.03 305.82, 245.55 355.88 C228.75 403.05, 109.6 414.01, 53.56 362.95\" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M118.44 99.34 L113.07 74.38 L117.99 69.65 L181.24 69.61 L188 75.93 L181.37 99.17 C167.13 92.88, 137.5 92.63, 118.44 99.34\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><clipPath id=\"buttons_path\"><circle cx=\"149.25\" cy=\"340\" r=\"3\" /><circle cx=\"148.5\" cy=\"290.25\" r=\"3\" /><circle cx=\"149.5\" cy=\"239.5\" r=\"3\" /><circle cx=\"149.25\" cy=\"188.5\" r=\"3\" /></clipPath><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/22f.png\" clip-path=\"url(#rectView)\"/></svg>",
+				"back": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M53.56 361.7 C61.25 353.25, 80,314.5, 79.88, 303.27 L80.22 257.77 C80.27 257.77, 80.27 257.77, 64.61 209.69 L48.7 225.81 C39 229, 26.25 224.25, 12.77 210.49 L33.53 116.71 C53 106.5, 70.75 100.75, 90.66 97.27 L111.35 71.5 L117.46 66.65 L181.52 66.58 L190.05 72.09 L210.36 97.27 C231.5 100.75, 248.75 110, 267.2 116.85 L287.22 210.49 C279.25 220.5, 268 227, 251.3 225.22 L239.75 211.53 C243 232.25, 229 255.75, 218.36 278.92 L235.8 360.14 C219.5 406.75, 109 412.75, 53.56 361.7\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/22b.png\" clip-path=\"url(#rectView)\"/></svg>"
+			},
+			"31": {
+				"front": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M68.75 386.76 L73.39 249.03 L67.72 201.57 L59.46 229.94 L10.46 213.44 L37.8 134.61 C55 110.71, 85 110, 109.50 97.89 L120.85 74.16 C141.43 64.29, 162.14 67.14, 181.2 73.13 L201.32 100.46 L251.88 118 C281.43 150, 275 181.43, 289.53 210.34 C275.71 222.14, 257.86 227.86, 237.95 228.91 L234.34 213.44 L228.66 206.73 L223.50 279.47 L229.18 388.83 C175.71 401.43, 102.86 401.43, 68.75 386.76\" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M125.35 88.57 C122.86 84.47, 123.49 79.93, 123.74 75.51 C140.03 67.68, 158.47 67.81, 179.422 75.13 L182.5 80.35 L181.43 90 C167.05 86.37, 158.47 78.16, 125.35 88.57\" /><path d=\"M147.98 169.07 C146.22 144.58, 142.05 130.69, 137 120.08 L151.14 119.07 L156.95 135.48 L149.5 151.01 Z\" /><clipPath id=\"buttons_path\"><circle cx=\"148.46\" cy=\"128.04\" r=\"3\" /><circle cx=\"156.25\" cy=\"156.43\" r=\"3\" /></clipPath></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/31f.png\" clip-path=\"url(#rectView)\"/></svg>",
+				"back": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M68.75 386.76 L73.39 249.03 L67.72 201.57 L59.46 229.94 L10.46 213.44 L37.8 134.61 C55 110.71, 85 110, 109.50 97.89 L120.85 74.16 C141.43 64.29, 162.14 67.14, 181.2 73.13 L201.32 100.46 L251.88 118 C281.43 150, 275 181.43, 289.53 210.34 C275.71 222.14, 257.86 227.86, 237.95 228.91 L234.34 213.44 L228.66 206.73 L223.50 279.47 L229.18 388.83 C175.71 401.43, 102.86 401.43, 68.75 386.76\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/31b.png\" clip-path=\"url(#rectView)\"/></svg>"
+			},
+			"32": {
+				"front": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M65.71 382.86 L72.32 246.35 L68.78 215.38 L64.87 214.88 L61.21 217.66 C53.21 217.14, 33.21 210.71, 19.54 192.28 C30 167.14, 33.57 142.86, 54.64 117.86 C69.45 107.33, 86.62 101.27, 102.88 94.29 L112.22 72.57 C137.14 67.86, 160.71 68.57, 185.2 71.06 L195.43 92.14 C212.14 101.43, 239.64 104.64, 254.4 118.16 C261.07 126.79, 272.14 170, 280.41 194.55 C266.43 202.14, 251.43 208.21, 235.59 207.17 L232.56 204.9 L233.95 199.47 L231.67 198.71 L228.6 246.41 C228.21 291.43, 236.07 346.79, 243.16 377.64 C197.5 398.57, 126.43 400.71, 67.65 384.46 \" /></clipPath><clipPath id=\"finishing_path\"><path d=\"M142.14 150 V107.85 L150 102.14 L158.21 107.85 V157.5 150.35 Z \" /><path d=\"M116.78 80.71 L115.47 78.66 C138.57 77.14, 161.25 77.32, 183.93 78.21 L182.5 80.71 C160.54 80.18, 138.57 80.18, 116.79 80.71 \" /></clipPath><clipPath id=\"buttons_path\"><circle cx=\"149.64\" cy=\"110\" r=\"3.2\" /><circle cx=\"149.73\" cy=\"123.21\" r=\"3.2\" /><circle cx=\"150.09\" cy=\"137.14\" r=\"3.2\" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image href=\"c2\" clip-path=\"url(#finishing_path)\"/><image href=\"c3\" clip-path=\"url(#buttons_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/32f.png\" clip-path=\"url(#rectView)\"/></svg>",
+				"back": "<svg width=\"100%\" viewBox=\"0 0 300 464\"><defs><clipPath id=\"shirt_path\"><path d=\"M65.71 382.86 L72.32 246.35 L68.78 215.38 L64.87 214.88 L61.21 217.66 C53.21 217.14, 33.21 210.71, 19.54 192.28 C30 167.14, 33.57 142.86, 54.64 117.86 C69.45 107.33, 86.62 101.27, 102.88 94.29 L115.43 74.33 C142.43 68.7, 167.69 69.72, 187.17 74.93 L195.43 92.14 C212.14 101.43, 239.64 104.64, 254.4 118.16 C261.07 126.79, 272.14 170, 280.41 194.55 C266.43 202.14, 251.43 208.21, 235.59 207.17 L232.56 204.9 L233.95 199.47 L231.67 198.71 L228.6 246.41 C228.21 291.43, 236.07 346.79, 243.16 377.64 C197.5 398.57, 126.43 400.71, 67.65 384.46 \" /></clipPath><clipPath id=\"rectView\"><rect width=\"100%\" height=\"100%\"/></clipPath></defs><image href=\"c1\" clip-path=\"url(#shirt_path)\"/><image width=\"100%\" height=\"100%\" href=\"/humbertosouza/branch2/img/simulator/32b.png\" clip-path=\"url(#rectView)\"/></svg>"
+			}
+		}
+	},
+	"stepfour": {
+		"title": "Inserir Imagem"
+	},
+	"stepfive": {
+		"title": "Parabéns!<br />Você concluiu a simulação."
+	}
+}
