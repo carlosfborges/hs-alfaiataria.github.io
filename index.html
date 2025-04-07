@@ -1,136 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Humberto Souza Alfaiataria</title>
-	<link rel="shortcut icon" type="image/x-png" href="img/icon.png">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Simulador de Uniformes Sociais</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="canvas.css">
 </head>
 <body>
-<main>
-	<p>Bem Vindo!</p>
-	<header class="container c-white">		
-		<div id="div-svg"></div>
+	<header class="bg-black">
+		<div class="container text-center">
+			<img src="logo-hs-horizontal.png">
+		</div>
 	</header>
-	<section class="container c-white" id="uniforme">
-		<div>
-			<h4 style="text-transform: uppercase;">Crie seu uniforme</h4>
-			<h1>Simulador de uniformes profissionais.</h1>
-			<h4 style="margin-top: 20px;">
-				Escolha o tipo de camisa, modelo,<br />
-				tecido, cores e coloque a sua logo.
-			</h4>
-			<button style="display: none;" target="#simulador">Comece agora</button>
-			<!--
-			<p class="btn" id="message">Disponível em Desktops e Tablets</p>
-			-->
-		</div>
-		<div>
-			<div id="circle-colors">
-				<div id="color1" class="color-select"></div>
-				<div id="color2" class=""></div>
-				<div id="color3" class=""></div>
-			</div>
-			<svg id="male" width="48%" viewBox="0 0 300 464">
-				<defs>
-					<clipPath id="shirt_path">
-						<path d="M61.99 403.63 L68.42 300.06 L39.85 403.99 L2.70 394.7 L24.49 245.06 L27.7 124.7 C42.43 78.79, 79.8 80.81, 104.85 57.92 C107.08 36.37, 118.19 39.4, 128.42 35.06 L179.49 37.2 L192.7 56.13 L245.56 83.27 C263.65 100.01, 264.66 112.13, 268.78 125.41 L294.13 262.56 L297.35 307.56 L292.66 333.21 L253.2 330.83 L254.13 321.49 L241.63 256.84 L226.99 216.13 L218.06 310.77 L229.13 393.63 L221.63 392.2 C203.04 429.31, 90.91 449.52, 61.99 403.63" />
-					</clipPath>
-					<clipPath id="finishing_path">
-						<path d="M251.99 361.12 L246.44 336.34 C247.23 333.86, 249.63 332.09, 253.21 330.83 C268.83 329.94, 283.6 331.33, 298.05 333.82 L292.46 362.13 L288.69 362.32 C276.15 361.13, 263.9 359.49, 251.99 361.12" />
-						<path d="M124.75 90.41 L110.61 83.84 L105.84 57.8 C106.79 41.61, 114.11 37.41, 128.46 36.42 L179.49 37.2 L170.53 51.96 Q135.71 50.36, 127.3 51.15 Q115.18 52.5, 116.79 54.55 C108.84 73.04, 112.41 86.61, 124.75 90.41" />
-					</clipPath>
-					<clipPath id="buttons_path">
-						<circle cx="111.52" cy="341.07" r="3"/>
-						<circle cx="112.59" cy="291.52" r="3" />
-						<circle cx="113.66" cy="246.96" r="3" />
-						<circle cx="114.82" cy="201.34" r="3" />
-						<circle cx="117.68" cy="158.21" r="3" />
-						<circle cx="125.63" cy="117.95" r="3" />
-						<path d="M109.91 89.28 L114.19 90.53 Q111.7 92.23, 110.62 91.42 Q110 91.07, 109.91 89.28" />
-					</clipPath>
-					<clipPath id="rectView">
-						<rect width="100%" height="100%"/>
-					</clipPath>
-				</defs>
-				<image href="/humbertosouza/branch2/img/profit/manteiga.png" clip-path="url(#shirt_path)"/>
-				<image href="/humbertosouza/branch2/img/profit/branco.png" clip-path="url(#finishing_path)"/>
-				<image href="/humbertosouza/branch2/img/buttons/silver.png" clip-path="url(#buttons_path)"/>
-				<image width="100%" height="100%" href="/humbertosouza/branch2/img/simulator/11f.png" clip-path="url(#rectView)"/>
-				<path d="M140 150 h52 v50 h-52 Z" fill="rgba(255, 255, 255, 0.8)" />
-				<text fill="black" x="150" y="170">Seu</text>
-				<text fill="black" x="150" y="190">Logo</text>
-			</svg>
-			<svg id="female" width="48%" viewBox="0 0 300 464">
-				<defs>
-					<clipPath id="shirt_path_female">
-						<path d="M2.39 404.76 L16.16 355.45 C8.08 268.7, 46.47 106.07, 56.58 94.48 L114.33 76.49 L126.69 54.25 C163.64 44.45, 179.81 53.54, 190.14 58.97 L205.21 81.27 L215.58 87.23 L254.84 100.43 C266.68 115.16, 294.96 242.44, 286.88 331.12 L245.29 336.99 L230.68 248.62 C234.36 235.37, 231.32 211.12, 225.61 189.45 Q199 246.48, 237.51 358.8 C233.35 370.73, 223.24 393.96, 201.97 411.71 Q193.21 419.82, 160.97 410.87 V414.98 L116.53 412.13 Q40.79 395.14, 75.8 295.17 Q90.36 258.21, 83.34 195.91 C71.72 266.68, 56.57 334.36, 49.92 411.87 Z" />
-					</clipPath>
-					<clipPath id="finishing_path_female">
-						<path d="M241.37 333.34 C260.37 331.84, 277.41 329.31, 292.1 325.17 C290.29 337.9, 288.9 350.14, 297.6 358.94 C286.13 377.42, 264.41 367.06, 247.03 367.73 C240.29 356.58, 243.07 343.7, 241.37 333.34" />
-						<path d="M127.32 56.42 C151.78 47.98, 172.86 48.23, 188.75 60.89 C189.66 64.65, 189.91 68.44, 187.85 73.92 C167.31 59.85, 146.98 58.34, 127.14 76.25 C123.62 70.21, 125.76 63.26, 127.32 56.42" />
-					</clipPath>
-					<clipPath id="buttons_path_female">
-						<circle cx="153.75" cy="356.43" r="3" />
-						<circle cx="152.68" cy="314.29" r="3" />
-						<circle cx="153.57" cy="270.89" r="3" />
-						<circle cx="152.68" cy="228.21" r="3" />
-						<circle cx="153.57" cy="183.93" r="3" />
-						<path d="M182.39 93.5 L185.11 90.41 Q185.93 92.49, 185.3 92.99 Q184.73 93.88, 182.39 93.5" />
-					</clipPath>
-					<clipPath id="rectView">
-						<rect width="100%" height="100%"/>
-					</clipPath>
-				</defs>
-				<image href="/humbertosouza/branch2/img/profit/manteiga.png" clip-path="url(#shirt_path_female)"/>
-				<image href="/humbertosouza/branch2/img/profit/branco.png" clip-path="url(#finishing_path_female)"/>
-				<image href="/humbertosouza/branch2/img/buttons/silver.png" clip-path="url(#buttons_path_female)"/>
-				<image width="100%" height="100%" href="/humbertosouza/branch2/img/simulator/12f.png" clip-path="url(#rectView)"/>
-				<path d="M170 150 h52 v50 h-52 Z" fill="rgba(255, 255, 255, 0.8)" />
-				<text fill="black" x="180" y="170">Seu</text>
-				<text fill="black" x="180" y="190">Logo</text>
-			</svg>
-		</div>
-	</section>
-	<div class="space">
-		<p class="btn" id="message">Disponível em Desktops e Tablets</p>
-	</div>
-	<section id="simulador">
-		<iframe src=""></iframe>
-	</section>	
-	<div class="space"></div>
-	<footer class="c-white">
-		<div>
-			<h2>A Humberto Souza Alfaiataria é especializada em confecção de uniformes profissionais e trajes sociais sob medida.</h2>			
-			<a class="btn" href="https://api.whatsapp.com/send?phone=+5548999812348&amp;text=Olá, quero falar com o vendedor da Humberto Souza Alfaiataria." target="_blank" rel="noopener">Fale com o vendedor</a>
-		</div>
-		<div>
-			<div id="medias">
-				<h2>Mídias Sociais <span>Links</span></h2>
-				<ul>
-					<li><a href="https://www.facebook.com/pages/Humberto-Souza-Alfaiataria/818125364965400" target="_blank">facebook</a></li>
-					<li><a href="https://www.instagram.com/humbertosouzaalfaiataria/" target="_blank">instagram</a></li>
-				</ul>
-			</div>
-			<div id="contato">
-				<h2>Contato</h2>
-				<ul>
-					<li>telefone: <span>(48) 3533-1010</span></li>
-					<li>whatsapp: <span>(48) 9 9981-2348</span></li>
-				</ul>
-			</div>
-			<div id="endereco">
-				<h2>Onde estamos</h2>
-				<ul>
-					<li>Av. Getúlio Vargas 817 - sala 02</li>
-					<li>Nova Brasília</li>
-					<li>Sombrio-SC</li>
-				</ul>
-			</div>
-		</div>		
-	</footer>
-</main>
-<script src="js/index.js"></script>
+
+    <div id="container" class="container mt-3">
+        <p class="h4 text-center">Seja bem vindo ao</p>
+        <h1 class="text-center">Simulador de Uniformes</h1>
+
+        <div id="images" class="mt-5 mb-3">
+
+          <div class="item1">
+            <label class="form-label">Gênero:</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="male" id="maleRadio">
+                <label class="form-check-label" for="maleRadio"><i class="bi bi-person"></i> Masculino</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="female" id="femaleRadio" checked>
+                <label class="form-check-label" for="femaleRadio"><i class="bi bi-person-fill"></i> Feminino</label>
+            </div>
+          </div>
+
+          <div class="item2">
+            <label class="form-label">Modelo:</label>
+            <div>
+              <button id="long" class="btn">Social Manga Longa</button>
+              <button id="short" class="btn active">Social Manga Curta</button>
+              <button id="polo" class="btn">Polo</button>
+            </div>
+          </div>
+
+          <div id="finish" class="item3 border text-center">
+            <p class="mt-2">Cores</p>
+            <div>
+              <div>
+                <label class="form-label">Tecido:</label>
+                <input type="color" id="fabricColor" class="form-control form-control-color border" value="#ffffff">
+              </div>
+              <div>
+                <label class="form-label">Gola e punhos:</label>
+                <input type="color" id="collarColor" class="form-control form-control-color border" value="#ffffff">
+              </div>
+              <div>
+                <label class="form-label">Botões:</label>
+                <input type="color" id="buttonColor" class="form-control form-control-color border" value="#ffffff">
+              </div>
+            </div>
+          </div>
+
+          <div id="preview" class="mb-3 item4">
+	      <spline-viewer url="https://prod.spline.design/m3OSSAhNpTpBZKzj/scene.splinecode"></spline-viewer>
+              <div>
+                <label class="form-label"><i class="bi bi-images"></i> Add. Imagem</label>
+                <input type="file" id="imageUpload" class="form-control">
+              </div>
+          </div>
+
+          <div class="item5">
+            <div>
+              <label class="form-label">Posição Y:</label>
+              <input id="posY" type="range" class="form-range" min="0" max="100">
+            </div>
+          </div>
+
+          <div class="item6">
+            <input id="posX" type="range" class="form-range" min="0" max="100">
+            <label class="form-label">:X Posição</label>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid p-5 bg-black">
+      <div class="card w-50 m-auto">
+        <div class="card-header">
+          Resumo
+        </div>
+        <div class="card-body">
+          <p class="card-text">Opções escolhidas:</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Gênero:</b> <span id="summary-gender">Feminino</span></li>
+            <li class="list-group-item"><b>Modelo:</b> <span id="summary-model">Social manga curta</span></li>
+            <li class="list-group-item"><b>Cores:</b> 
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Tecido:</b> <span id="summary-fabric">Branco</span></li>
+                <li class="list-group-item"><b>Gola e punhos:</b> <span id="summary-collar">Branco</span></li>
+                <li class="list-group-item"><b>Botões:</b> <span id="summary-button">Branco</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary d-block" style="font-size: 18pt;">
+		  <i class="bi bi-whatsapp"></i> Solicitar Orçamento</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer></footer>
+
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="canvas.js"></script>
 </body>
 </html>

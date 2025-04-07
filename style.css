@@ -1,0 +1,77 @@
+/* style.css */
+header img {
+	width: 100%;
+	height: auto;
+	max-width: 500px;
+}
+footer {
+	min-height: 100px;
+}
+#canvas {
+    border: 1px solid black;
+    width: 100%;
+    height: 70vh;
+}
+#preview { position: relative; }
+#preview > div { 
+  position: absolute; 
+  top: 8px;
+  right: 8px;
+}
+#preview input { 
+  position: absolute; 
+  top: 0;
+  width: 116px;
+  opacity: 0;
+}
+#finish > div  { 
+  display: grid;
+  gap: 8px;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: calc(100% - 30px); 
+}
+#finish input { 
+  display: inline-block; 
+  border: none;
+}
+#images {
+  display: grid;
+  gap: 8px;
+  grid-template-areas:
+    '. gender .'
+    '. model .'
+    'finish canvas posy'
+    '. posx .';
+  grid-template-rows: 30px 70px 70vh 70px;
+  grid-template-columns: 1fr 9fr 70px;
+}
+.item1 { grid-area: gender; }
+.item2 { grid-area: model; }
+.item2 div { 
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto auto 33%;
+}
+.item3 { grid-area: finish; }
+.item4 { grid-area: canvas; }
+.item5 { 
+  grid-area: posy; 
+  position: relative;
+}
+.item5 div {
+  position: absolute;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 80px auto;
+  transform: rotate(-90deg); 
+  bottom: 47%;
+  width: 70vh;
+  right: calc(-35vh + 50px);
+}
+.item6 { 
+  grid-area: posx; 
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 80px;
+}
+
