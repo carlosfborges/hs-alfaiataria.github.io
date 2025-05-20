@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de Div</title>
+    <link rel="stylesheet" href="menu-suspenso.css">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li class="dropdown">
+                <a href="#">Camisa Social</a>
+                <ul class="submenu">
+                    <li selected="true"><img data-model="mod1h" data-text="Camisa social masculina" src="modelos/social-homem-frente.jpeg" alt="Camisa Social 1" width="50"></li>
+                    <li><img data-model="mod1m" data-text="Camisa social feminina" src="modelos/social-mulher-frente.jpeg" alt="Camisa Social 2" width="50"></li>
+                    </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Social Manga Curta</a>
+                <ul class="submenu">
+                    <li><img data-model="mod2h" data-text="Camisa social manga curta masculina" src="modelos/social_manga_curta-homem-frente.jpeg" alt="Social Manga Curta 1" width="50"></li>
+                    <li><img data-model="mod2m" data-text="Camisa social manga curta feminina" src="modelos/social_manga_curta-mulher-frente.jpeg" alt="Social Manga Curta 2" width="50"></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Polo</a>
+                <ul class="submenu">
+                    <li><img data-model="mod3h" data-text="Camisa polo masculina" src="modelos/polo-homem-frente.jpeg" alt="Polo 1" width="50"></li>
+                    <li><img data-model="mod3m" data-text="Camisa polo feminina" src="modelos/polo-mulher-frente.jpeg" alt="Polo 2" width="50"></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="workspace">
+        <div class="aux">
+            <div>
+                <button id="addDiv">
+                    <i class="material-icons" style="font-size:36px">perm_media</i>
+                    Ad. Arte
+                </button>
+                <form>
+                    <div>
+                        <input id="img-input" type="file" name="imagem">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="container-model" class="container-imgs">
+                <img src="modelos/social-homem-frente.jpeg" alt="Camisa Social 1">
+            </div>
+        </div>
+
+        <div class="controls">
+            <div selected="true" data-finishname="Base" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
+                <i class="material-icons" style="font-size:36px">color_lens</i>
+                Base
+            </div>
+            <div data-finishname="Gola" data-colorname="Laranja" data-colorvalue="rgb(255, 63, 0)">
+                <i class="material-icons" style="font-size:36px">color_lens</i>
+                Gola
+            </div>
+            <div data-finishname="Forro" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
+                <i class="material-icons" style="font-size:36px">color_lens</i>
+                Forro
+            </div>
+            <div data-finishname="Botões" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
+                <i class="material-icons" style="font-size:36px">color_lens</i>
+                Botões
+            </div>
+        </div>
+
+        <div class="options">
+            <p>Opções de cores: <span id="finish-name">Base</span></p>
+            <p>Cor selecionada: <span id="color-name">Branco</span></p>
+            <div class="colors">
+                <div selected="true" title="Nome da cor" style="background-color: rgb(250, 250, 250);"></div>
+                <div title="Nome da cor" style="background-color: rgb(220, 220, 220);"></div>
+                <div title="Nome da cor" style="background-color: rgb(192, 192, 192);"></div>
+                <div title="Nome da cor" style="background-color: rgb(128, 128, 128);"></div>
+                <div title="Nome da cor" style="background-color: rgb(105, 105, 105);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 0, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 0, 0);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(255, 63, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 127, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 191, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 255, 0);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(191, 255, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(127, 255, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(63, 255, 0);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 255, 0);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(0, 255, 63);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 255, 127);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 255, 191);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 255, 255);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(0, 191, 255);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 127, 255);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 63, 255);"></div>
+                <div title="Nome da cor" style="background-color: rgb(0, 0, 255);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(63, 0, 255);"></div>
+                <div title="Nome da cor" style="background-color: rgb(127, 0, 255);"></div>
+                <div title="Nome da cor" style="background-color: rgb(191, 0, 255);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 0, 255);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(255, 0, 191);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 0, 127);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 0, 63);"></div>
+                <div title="Nome da cor" style="background-color: rgb(255, 165, 0);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(255, 192, 203);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(75, 0, 130);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(238, 130, 238);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(128, 0, 0);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(0, 128, 0);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(0, 0, 128);"></div> 
+                <div title="Nome da cor" style="background-color: rgb(128, 128, 0);"></div>
+            </div>
+        </div>
+        
+        <div class="space"></div>
+
+        <div class="shirt-title">
+            <h2>Camisa social masculina</h2>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="share">
+          <p>Compartilhamento</p>
+        </div>
+    </div>
+
+    <script src="lib.js"></script>
+    <script src="menu-suspenso.js"></script>
+    <script src="main.js"></script>
+    <script src="colors.js"></script>
+</body>
+</html>
+
+
