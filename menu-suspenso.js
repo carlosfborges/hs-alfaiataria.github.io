@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
             default:
                 innerModel = `
                     <img src="modelos/social-homem-frente.jpeg" alt="Camisa Social 1">
+                    <img class="mask" src="modelos/social-homem-frente-mask-base.png" alt="Mascara base" style="filter: url(#color-00)">
+                    <img class="mask mask-forros" src="modelos/social-homem-frente-mask-forro.png" alt="Mascara forros" style="filter: url(#color-00)">
                 `;
                 break;
         }

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<main>
     <nav class="menu">
         <ul>
             <li class="dropdown">
@@ -53,23 +54,25 @@
         <div class="container">
             <div id="container-model" class="container-imgs">
                 <img src="modelos/social-homem-frente.jpeg" alt="Camisa Social 1">
+                <img class="mask mask-base" src="modelos/social-homem-frente-mask-base.png" alt="Mascara base" style="filter: url(#color-00)">
+                <img class="mask mask-forro" src="modelos/social-homem-frente-mask-forro.png" alt="Mascara forros" style="filter: url(#color-00)">
             </div>
         </div>
 
         <div class="controls">
-            <div selected="true" data-finishname="Base" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
+            <div selected="true" data-finishname="Base" data-finishvalue="base" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
                 <i class="material-icons" style="font-size:36px">color_lens</i>
                 Base
             </div>
-            <div data-finishname="Gola" data-colorname="Laranja" data-colorvalue="rgb(255, 63, 0)">
+            <div data-finishname="Gola" data-finishvalue="gola" data-colorname="Laranja" data-colorvalue="rgb(255, 63, 0)">
                 <i class="material-icons" style="font-size:36px">color_lens</i>
                 Gola
             </div>
-            <div data-finishname="Forro" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
+            <div data-finishname="Forro" data-finishvalue="forro" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
                 <i class="material-icons" style="font-size:36px">color_lens</i>
                 Forro
             </div>
-            <div data-finishname="Botões" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
+            <div data-finishname="Botões" data-finishvalue="botoes" data-colorname="Branco" data-colorvalue="rgb(250, 250, 250)">
                 <i class="material-icons" style="font-size:36px">color_lens</i>
                 Botões
             </div>
@@ -79,44 +82,42 @@
             <p>Opções de cores: <span id="finish-name">Base</span></p>
             <p>Cor selecionada: <span id="color-name">Branco</span></p>
             <div class="colors">
-                <div selected="true" title="Nome da cor" style="background-color: rgb(250, 250, 250);"></div>
-                <div title="Nome da cor" style="background-color: rgb(220, 220, 220);"></div>
-                <div title="Nome da cor" style="background-color: rgb(192, 192, 192);"></div>
-                <div title="Nome da cor" style="background-color: rgb(128, 128, 128);"></div>
-                <div title="Nome da cor" style="background-color: rgb(105, 105, 105);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 0, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 0, 0);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(255, 63, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 127, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 191, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 255, 0);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(191, 255, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(127, 255, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(63, 255, 0);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 255, 0);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(0, 255, 63);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 255, 127);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 255, 191);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 255, 255);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(0, 191, 255);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 127, 255);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 63, 255);"></div>
-                <div title="Nome da cor" style="background-color: rgb(0, 0, 255);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(63, 0, 255);"></div>
-                <div title="Nome da cor" style="background-color: rgb(127, 0, 255);"></div>
-                <div title="Nome da cor" style="background-color: rgb(191, 0, 255);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 0, 255);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(255, 0, 191);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 0, 127);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 0, 63);"></div>
-                <div title="Nome da cor" style="background-color: rgb(255, 165, 0);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(255, 192, 203);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(75, 0, 130);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(238, 130, 238);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(128, 0, 0);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(0, 128, 0);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(0, 0, 128);"></div> 
-                <div title="Nome da cor" style="background-color: rgb(128, 128, 0);"></div>
+                <div selected="true" title="cor-00" style="background-color: rgb(250, 250, 250);"></div>
+                <div title="cor-01" style="background-color: rgb(220, 220, 220);"></div>
+                <div title="cor-02" style="background-color: rgb(192, 192, 192);"></div>
+                <div title="cor-03" style="background-color: rgb(128, 128, 128);"></div>
+                <div title="cor-04" style="background-color: rgb(105, 105, 105);"></div>
+                <div title="cor-05" style="background-color: rgb(0, 0, 0);"></div>
+                <div title="cor-06" style="background-color: rgb(255, 0, 0);"></div> 
+                <div title="cor-07" style="background-color: rgb(255, 63, 0);"></div>
+                <div title="cor-08" style="background-color: rgb(255, 127, 0);"></div>
+                <div title="cor-30" style="background-color: rgb(255, 165, 0);"></div> 
+                <div title="cor-09" style="background-color: rgb(255, 191, 0);"></div>
+                <div title="cor-10" style="background-color: rgb(255, 255, 0);"></div> 
+                <div title="cor-11" style="background-color: rgb(191, 255, 0);"></div>
+                <div title="cor-12" style="background-color: rgb(127, 255, 0);"></div>
+                <div title="cor-13" style="background-color: rgb(63, 255, 0);"></div>
+                <div title="cor-14" style="background-color: rgb(0, 255, 0);"></div> 
+                <div title="cor-15" style="background-color: rgb(0, 255, 63);"></div>
+                <div title="cor-35" style="background-color: rgb(0, 128, 0);"></div> 
+                <div title="cor-16" style="background-color: rgb(0, 255, 127);"></div>
+                <div title="cor-17" style="background-color: rgb(0, 255, 191);"></div>
+                <div title="cor-18" style="background-color: rgb(0, 255, 255);"></div> 
+                <div title="cor-19" style="background-color: rgb(0, 191, 255);"></div>
+                <div title="cor-20" style="background-color: rgb(0, 127, 255);"></div>
+                <div title="cor-21" style="background-color: rgb(0, 63, 255);"></div>
+                <div title="cor-36" style="background-color: rgb(0, 0, 128);"></div> 
+                <div title="cor-32" style="background-color: rgb(75, 0, 130);"></div> 
+                <div title="cor-24" style="background-color: rgb(127, 0, 255);"></div>
+                <div title="cor-25" style="background-color: rgb(191, 0, 255);"></div>
+                <div title="cor-26" style="background-color: rgb(255, 0, 255);"></div> 
+                <div title="cor-27" style="background-color: rgb(255, 0, 191);"></div>
+                <div title="cor-28" style="background-color: rgb(255, 0, 127);"></div>
+                <div title="cor-29" style="background-color: rgb(255, 0, 63);"></div>
+                <div title="cor-33" style="background-color: rgb(238, 130, 238);"></div> 
+                <div title="cor-31" style="background-color: rgb(255, 192, 203);"></div> 
+                <div title="cor-34" style="background-color: rgb(128, 0, 0);"></div> 
+                <div title="cor-37" style="background-color: rgb(128, 128, 0);"></div>
             </div>
         </div>
         
@@ -129,7 +130,7 @@
         <div class="space"></div>
 
         <div class="share">
-          <p>Compartilhamento</p>
+          <p class="flex-column-center"><i class="material-icons">picture_as_pdf</i> Salvar PDF</p>
         </div>
     </div>
 
@@ -137,6 +138,118 @@
     <script src="menu-suspenso.js"></script>
     <script src="main.js"></script>
     <script src="colors.js"></script>
+</main>
+<div id="color-matrix">
+    <svg><filter id="cor-00"><feColorMatrix values="0.9803921568627451 0 0 0 0
+                                       0 0.9803921568627451 0 0 0
+                                       0 0 0.9803921568627451 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-01"><feColorMatrix values="0.8627450980392157 0 0 0 0
+                                       0 0.8627450980392157 0 0 0
+                                       0 0 0.8627450980392157 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-02"><feColorMatrix values="0.7529411764705882 0 0 0 0
+                                       0 0.7529411764705882 0 0 0
+                                       0 0 0.7529411764705882 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-03"><feColorMatrix values="0.5019607843137255 0 0 0 0
+                                       0 0.5019607843137255 0 0 0
+                                       0 0 0.5019607843137255 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-04"><feColorMatrix values="0.4117647058823529 0 0 0 0
+                                       0 0.4117647058823529 0 0 0
+                                       0 0 0.4117647058823529 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-05"><feColorMatrix values="0.02 0 0 0 0
+                                       0 0.02 0 0 0
+                                       0 0 0.02 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-06"><feColorMatrix values="1 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-08"><feColorMatrix values="1 0 0 0 0
+                                       0 0.24705882352941178 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-09"><feColorMatrix values="1 0 0 0 0
+                                       0 0.4980392156862745 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-07"><feColorMatrix values="1 0 0 0 0
+                                       0 0.1 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-10"><feColorMatrix values="1 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-11"><feColorMatrix values="0.7490196078431373 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-12"><feColorMatrix values="0.4980392156862745 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-13"><feColorMatrix values="0.24705882352941178 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-14"><feColorMatrix values="0 0 0 0 0
+                                       0 0.8 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-15"><feColorMatrix values="0 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0.24705882352941178 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-16"><feColorMatrix values="0 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0.4980392156862745 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-17"><feColorMatrix values="0 0 0 0 0
+                                       0 1 0 0 0
+                                       0 0 0.7490196078431373 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-18"><feColorMatrix values="0 0 0 0 0
+                                       0 0.7490196078431373 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-19"><feColorMatrix values="0 0 0 0 0
+                                       0 0.4980392156862745 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-20"><feColorMatrix values="0 0 0 0 0
+                                       0 0.24705882352941178 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-21"><feColorMatrix values="0 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-24"><feColorMatrix values="0.24705882352941178 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-25"><feColorMatrix values="0.4980392156862745 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-26"><feColorMatrix values="1 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 1 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-27"><feColorMatrix values="1 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0.7490196078431373 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-28"><feColorMatrix values="1 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0.4980392156862745 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-29"><feColorMatrix values="1 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0.24705882352941178 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-30"><feColorMatrix values="1 0 0 0 0
+                                       0 0.3470588235294118 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-31"><feColorMatrix values="1 0 0 0 0
+                                       0 0.6529411764705882 0 0 0
+                                       0 0 0.696078431372549 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-32"><feColorMatrix values="0.29411764705882354 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0.5098039215686274 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-33"><feColorMatrix values="0.9333333333333333 0 0 0 0
+                                       0 0.5098039215686274 0 0 0
+                                       0 0 0.9333333333333333 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-34"><feColorMatrix values="0.5019607843137255 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-35"><feColorMatrix values="0 0 0 0 0
+                                       0 0.3019607843137255 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-36"><feColorMatrix values="0 0 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0.5019607843137255 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg><svg><filter id="cor-37"><feColorMatrix values="0.5019607843137255 0 0 0 0
+                                       0 0.5019607843137255 0 0 0
+                                       0 0 0 0 0
+                                       0 0 0 1 0"></feColorMatrix></filter></svg>
+</div>
 </body>
 </html>
 
