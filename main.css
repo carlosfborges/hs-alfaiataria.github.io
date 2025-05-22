@@ -178,3 +178,8 @@ button, input[type=file], .controls > div, .colors > div {
 .mask {
     position: absolute;
 }
+
+#color-matrix {
+    height: 0;
+    overflow: hidden;
+}
