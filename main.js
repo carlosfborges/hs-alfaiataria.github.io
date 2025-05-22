@@ -97,22 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            const removeButton = document.createElement('button');
-            removeButton.innerText = 'Remover';
+            // const removeButton = document.createElement('button');
+            const removeButton = document.createElement('i');
+            removeButton.classList.add('material-icons');
+            removeButton.style.fontSize = '36px';
+            removeButton.style.color = 'red';
+            removeButton.innerHTML = 'delete';
+            // removeButton.innerText = 'Remover';
             removeButton.style.position = 'absolute';
-            removeButton.style.top = '-20px';
-            removeButton.style.left = '0';
+            // removeButton.style.top = '-20px';
+            // removeButton.style.left = '0';
+            removeButton.style.top = '-40px';
+            removeButton.style.left = '-40px';
             removeButton.addEventListener('click', () => {
                 this.container.removeChild(div);
                 this.movableDiv = null;
             });
             div.appendChild(removeButton);
 
-            const resizeHandle = document.createElement('div');
+            // const resizeHandle = document.createElement('div');
+            const resizeHandle = document.createElement('i');
+            resizeHandle.classList.add('material-icons');
+            resizeHandle.style.fontSize = '36px';
+            resizeHandle.innerHTML = 'aspect_ratio';
             resizeHandle.classList.add('resize-handle');
             resizeHandle.style.position = 'absolute';
-            resizeHandle.style.bottom = '0';
-            resizeHandle.style.right = '0';
+            resizeHandle.style.bottom = '-15px';
+            resizeHandle.style.right = '-15px';
             resizeHandle.style.width = this.resizeHandleSize + 'px';
             resizeHandle.style.height = this.resizeHandleSize + 'px';
             resizeHandle.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
@@ -121,12 +132,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Limpa o input file para que se possa escolher novamente a mesma imagem
+    function limparInputFile(original) {
+        const input = document.createElement('input');
+        input.setAttribute('id', 'img-input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('name', 'image');
+        original.parentNode.appendChild(input);
+        original.remove();
+        input.addEventListener('change', readImage, false);
+    }
 
     const container = document.querySelector('.container');
 
-    function readImage() {
+    function readImage(event) {
+        // Pega as coordenadas para iniciar as posições top e left da imagem
+        const containerRect = container.getBoundingClientRect();
+        
         const div = new DinamicElement(container);
         div.init();
+
+        div.movableDiv.style.top = containerRect.top + containerRect.height / 2 - 50 + 'px';
+        div.movableDiv.style.left = containerRect.left + containerRect.width / 2 - 50 + 'px';
 
         if (this.files && this.files[0]) {
             var file = new FileReader();
@@ -136,6 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };       
             file.readAsDataURL(this.files[0]);
         }
+
+        limparInputFile(event.target);
     }
 
     document.getElementById("img-input").addEventListener("change", readImage, false);
