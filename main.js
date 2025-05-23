@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.target === div) {
                     this.isDragging = true;
                     this.offsetX = e.clientX - div.getBoundingClientRect().left;
-                    this.offsetY = e.clientY - div.getBoundingClientRect().top;
+                    this.offsetY = e.clientY - div.getBoundingClientRect().top - window.scrollY;
                     div.style.cursor = 'grabbing';
                 } else if (e.target.classList.contains('resize-handle')) {
                     this.isResizing = true;
