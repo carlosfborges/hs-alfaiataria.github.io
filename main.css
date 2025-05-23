@@ -138,8 +138,13 @@ button, input[type=file], .controls > div, .colors > div {
     font-size: 14pt;
 }
 
+.options > h3 {
+    color: #00B5D1;
+    margin-top: 30px;
+}
+
 .colors {
-    margin-top: 20px;
+    margin-top: 15px;
     display: grid;
     grid-template-columns: repeat(6, auto);
     gap: 3px;
