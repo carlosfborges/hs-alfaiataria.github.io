@@ -113,12 +113,12 @@ button, input[type=file], .controls > div, .colors > div {
     border: 1px solid #ccc;
 }
 
-.shirt-title, .space, .share {
+.shirt-title, .space, .share, .reset {
     padding: 10px;
     border-top: 1px solid #ccc;
 }
 
-.shirt-title, .share {
+.shirt-title, .share, .reset {
     text-align: center;
 }
 
@@ -167,7 +167,7 @@ button, input[type=file], .controls > div, .colors > div {
     justify-content: center;
 }
 
-.share > p {
+.share > p, .reset > p {
     background-color: white;
     border: 1px solid red;
     color: red;
@@ -175,7 +175,7 @@ button, input[type=file], .controls > div, .colors > div {
     transition: var(--default-transition);
 }
 
-.share > p:hover {
+.share > p:hover, .reset > p:hover {
     background-color: rgba(255, 0, 0, .2);
     cursor: pointer;
 }

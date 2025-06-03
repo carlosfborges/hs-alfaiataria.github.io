@@ -82,6 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .dataset.finishvalue;
             document.querySelector(`.mask-${finishname}`).style.filter = `url(#${color.title})`;
 
+            // Muda o valor na sessão
+            ss_set(`cor_${finishname}`, color.title);
+
         });
     });
 });

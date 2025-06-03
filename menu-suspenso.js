@@ -43,8 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+
     // Troca de modelo ao clicar nas imagens dentro do menu
     function getInnerModel(ref) {
+        // Pega as cores dos acabamentos com base nas variáveis de sessao
+        const cor_base = sessionStorage.getItem('cor_base'); 
+        const cor_gola = sessionStorage.getItem('cor_gola'); 
+        const cor_forro = sessionStorage.getItem('cor_forro'); 
+        const cor_botoes = sessionStorage.getItem('cor_botoes'); 
+        const artes = sessionStorage.getItem('artes');
+    
         let innerModel = '';
         switch (ref) {
             case 'mod2h':
@@ -76,10 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
             default:
                 innerModel = `
                     <img src="modelos/social-homem-frente.jpeg" alt="Camisa Social 1">
-                    <img class="mask mask-base" src="modelos/social-homem-frente-mask-base.png" alt="Mascara base" style="filter: url(#color-00)">
-                    <img class="mask mask-forro" src="modelos/social-homem-frente-mask-forro.png" alt="Mascara forros" style="filter: url(#color-00)">
-                    <img class="mask mask-gola" src="modelos/social-homem-frente-mask-gola.png" alt="Mascara gola" style="filter: url(#color-00)">
-                    <img class="mask mask-botoes" src="modelos/social-homem-frente-mask-botoes.png" alt="Mascara botoes" style="filter: url(#color-00)">
+                    <img class="mask mask-base" src="modelos/social-homem-frente-mask-base.png" alt="Mascara base" style="filter: url(#${cor_base})">
+                    <img class="mask mask-forro" src="modelos/social-homem-frente-mask-forro.png" alt="Mascara forros" style="filter: url(#${cor_forro})">
+                    <img class="mask mask-gola" src="modelos/social-homem-frente-mask-gola.png" alt="Mascara gola" style="filter: url(#${cor_gola})">
+                    <img class="mask mask-botoes" src="modelos/social-homem-frente-mask-botoes.png" alt="Mascara botoes" style="filter: url(#${cor_forro})">
                 `;
                 break;
         }
